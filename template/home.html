@@ -1,0 +1,383 @@
+{%  load static  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sheryians Coding School | Learn to Code</title>
+  <style>
+    /* ===== RESET & GLOBAL STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: white;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== NAVIGATION ===== */
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 15px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links li a {
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #2ecc71;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #111;
+      min-width: 150px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+      z-index: 1;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      padding: 12px 20px;
+      display: block;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: #2ecc71;
+      color: black;
+    }
+
+    .btn-signin {
+      background: #2ecc71;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-signin:hover {
+      background: #27ae60;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      background: linear-gradient(to bottom, #0f0c0c, #000);
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: #2ecc71;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #aaa;
+    }
+
+    .cta-btn {
+      background: #2ecc71;
+      color: black;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: transform 0.3s, background 0.3s;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .cta-btn:hover {
+      background: #27ae60;
+      transform: translateY(-2px);
+    }
+
+    /* ===== STATS SECTION ===== */
+    .stats {
+      padding: 60px 20px;
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .stat-item {
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(46, 204, 113, 0.1);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #2ecc71;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #000;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== MOBILE MENU TOGGLE (Optional JS later) ===== */
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <img src="https://via.placeholder.com/40/2ecc71/000?text=S" alt="Sheryians Logo">
+          <span>Sheryians<br><small>coding school</small></span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'course' %}">Courses</a></li>
+          <li class="dropdown">
+            <a href="#">Bootcamp ▼</a>
+          </li>
+          <li><a href="{% url 'request' %}">Request Callback</a></li>
+          <li><a href="{% url 'signin' %}" class="btn-signin">Sign In</a></li>
+        </ul>
+
+        <div class="mobile-menu-btn">☰</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <h1>We only <span>teach</span><br>what we are really<br>really good at.</h1>
+      <p>Get ready to accelerate your career with customized courses and leave your mark in the tech industry.</p>
+      <a href="#" class="cta-btn">Check Courses—Make an Impact</a>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="stats">
+    <div class="container">
+      <h2>Our Impact</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">250k+</div>
+          <div class="stat-label">Students taught</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Instructors</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">607K+</div>
+          <div class="stat-label">Youtube Subs.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Sheryians Coding School. All rights reserved.</p>
+  </footer>
+
+  <!-- Optional: Add JS for mobile menu toggle -->
+  <script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+
+  <!-- Continue your webpage sections below -->
+
+<!-- TOP COMPANIES SECTION -->
+<section class="companies" style="background:#000; padding:80px 20px; text-align:center;">
+  <div class="container">
+    <h2 style="font-size:2.5rem; margin-bottom:20px;">Top <span style="color:#2ecc71;">companies</span> our students<br> working with</h2>
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:50px; margin-top:50px;">
+      <img src="/static/logos/netlink.png" alt="Netlink" style="height:50px;">
+      <img src="/static/logos/mindtree.png" alt="Mindtree" style="height:50px;">
+      <img src="/static/logos/walmart.png" alt="Walmart" style="height:50px;">
+      <img src="/static/logos/rapidops.png" alt="RapidOps" style="height:50px;">
+      <img src="/static/logos/tcs.png" alt="TCS" style="height:50px;">
+      <img src="/static/logos/amazon.png" alt="Amazon" style="height:50px;">
+      <img src="/static/logos/wipro.png" alt="Wipro" style="height:50px;">
+      <img src="/static/logos/gfg.png" alt="GeeksForGeeks" style="height:50px;">
+    </div>
+
+    <a href="#" style="display:inline-block; margin-top:40px; background:#2ecc71; padding:15px 35px; border-radius:40px; color:#000; font-weight:bold; font-size:1.2rem;">Explore Courses</a>
+  </div>
+</section>
+
+<!-- FOOTER SECTION -->
+<footer style="background:#000; padding:50px 20px; border-top:1px solid #333; color:white;">
+  <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px;">
+
+    <!-- Social -->
+    <div>
+      <h3 style="margin-bottom:10px;">Let's connect with our socials</h3>
+      <div style="display:flex; gap:20px; font-size:1.5rem;">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-discord"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-twitter"></i>
+      </div>
+    </div>
+
+    <!-- Company Links -->
+    <div>
+      <h3>COMPANY</h3>
+      <p>About Us</p>
+      <p>Support</p>
+      <p>Privacy Policy</p>
+      <p>Terms and Condition</p>
+      <p>Pricing and Refund</p>
+      <p>Hire From Us</p>
+      <p>Submit Projects</p>
+    </div>
+
+    <!-- Community -->
+    <div>
+      <h3>COMMUNITY</h3>
+      <p>Discord</p>
+      <p>Jobs</p>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3>Get In Touch</h3>
+      <p><strong>Online:</strong> 11am - 8pm<br>+91 9993478545</p>
+      <p><strong>Offline:</strong> 11am - 8pm<br>+91 96917 78470</p>
+      <p>hello@sheryians.com</p>
+      <p>23-B, Indrapuri Sector C,<br>Bhopal(MP), 462021</p>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:50px; color:#aaa;">Copyright © 2025 Sheryians Pvt. Ltd. All Rights Reserved.</p>
+</footer>
+
+
+</body>
+</html>
